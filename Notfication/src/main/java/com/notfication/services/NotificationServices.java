@@ -32,8 +32,8 @@ public class NotificationServices {
         templates.remove(templateID);
         notificationFunctions.deleteById(templateID);
     }
-    public void update(NotificationTemplate template){
-
+    public void update(int templateID,NotificationTemplate template){
+        notificationFunctions.deleteById(templateID);
         notificationFunctions.save(template);
     }
     public NotificationTemplate get(int templateID){
