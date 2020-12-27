@@ -55,7 +55,7 @@ public class NotificationController {
 
 	@PutMapping(path = "{id}")
 	public void update(@PathVariable("id") int id, @RequestBody NotificationTemplate notificationTemplate){
-		notifyImplementation.update(notificationTemplate);
+		notifyImplementation.update(id,notificationTemplate);
 	}
 	/*private final NotificationFunctionsImplementation notifyImplementation;
 	@Autowired
