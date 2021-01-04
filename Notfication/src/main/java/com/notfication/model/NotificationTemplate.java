@@ -10,14 +10,14 @@ import java.util.UUID;
 
 public class NotificationTemplate{
 @Id
-@GeneratedValue (strategy = GenerationType.SEQUENCE)
-	private final int id;
+//@GeneratedValue (strategy = GenerationType.SEQUENCE)
+	public  int id;
 @Column(name = "Subject")
-	private final String subject;
+	public  String subject;
 @Column(name = "Content")
-	private final String content;
+	public  String content;
 @Column(name = "Language")
-	private final String language;
+	public  String language;
 
 	public NotificationTemplate(int id,@JsonProperty("subject") String subject,@JsonProperty("content") String content,@JsonProperty("lang") String  language) {
 		this.id = id;
