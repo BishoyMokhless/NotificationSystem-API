@@ -22,23 +22,38 @@ public class NotificationServices {
 
     public List<NotificationTemplate> getAllTemplates(){
         //return templates;
-        return notificationFunctions.findAll();
+        List<NotificationTemplate> n= this.notificationFunctions.findAll();
+        return n;
     }
     public void add(NotificationTemplate template){
-       templates.add(template);
-       notificationFunctions.save(template);
+       //templates.add(template);
+       this.notificationFunctions.save(template);
     }
     public void delete(int templateID){
-        templates.remove(templateID);
-        notificationFunctions.deleteById(templateID);
+
+        //templates.remove(templateID);
+        this.notificationFunctions.deleteById(templateID);
     }
     public void update(int templateID,NotificationTemplate template){
-        notificationFunctions.deleteById(templateID);
-        notificationFunctions.save(template);
+
+        List<NotificationTemplate> n= this.notificationFunctions.findAll();
+        this.notificationFunctions.deleteAll();
+        n.remove(templateID);
+        n.add(templateID,template);
+        /*int i=0;
+        while (n.size()!= 0){
+            this.notificationFunctions.save(n.get(i));
+            i++;
+        }*/
+        this.notificationFunctions.saveAll(n);
     }
     public NotificationTemplate get(int templateID){
         //return templates.get(templateID);
-        return notificationFunctions.findById(templateID).orElseThrow(null);
+        int i = templateID-1;
+        List<NotificationTemplate> n= this.notificationFunctions.findAll();
+        NotificationTemplate temp = n.get(i);
+        return temp;
+
     }
 
 
